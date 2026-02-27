@@ -2,18 +2,16 @@ package com.website.surotec_academy.entity;
 
 import com.website.surotec_academy.enums.AcademyProjectStatus;
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "academy_project")
-
 public class AcademyProjectEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id", nullable = false)
+    @JoinColumn(name = "employee_id", nullable = false, columnDefinition = "INT")
     private EmployeeEntity employee;
 
     @Column(nullable = false, length = 200)
@@ -37,7 +35,6 @@ public class AcademyProjectEntity {
 
     public AcademyProjectEntity() {}
 
-    // 🔹 Constructor completo (ya corregido)
     public AcademyProjectEntity(Long id, EmployeeEntity employee, String title, String description,
                                 String imageUrl, String caption, LocalDateTime publishDate,
                                 AcademyProjectStatus status) {
@@ -51,7 +48,7 @@ public class AcademyProjectEntity {
         this.status = status;
     }
 
-    // 🔹 Getters y Setters
+    // Getters y Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -76,4 +73,3 @@ public class AcademyProjectEntity {
     public AcademyProjectStatus getStatus() { return status; }
     public void setStatus(AcademyProjectStatus status) { this.status = status; }
 }
-
