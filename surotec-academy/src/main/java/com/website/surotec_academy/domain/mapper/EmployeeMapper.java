@@ -51,10 +51,12 @@ public class EmployeeMapper {
 
     public static void updateEntityFromDto(EmployeeEntity entity, EmployeeDto dto) {
         if (dto == null || entity == null) return;
+        entity.setPosition(dto.position());
+        entity.setArea(dto.area());
+        entity.setHireDate(dto.hireDate());
         if (dto.userDto() != null && (entity.getUser() == null ||
                 !entity.getUser().getId().equals(dto.userDto().idUser()))) {
             entity.setUser(UserMapper.toEntity(dto.userDto()));
         }
-        entity.setHireDate(dto.hireDate());
     }
 }
